@@ -1,25 +1,37 @@
 import React, {useState} from "react"
 import {Container, Row, Col, Form, Button, FormGroup, Label, Input, Alert} from 'reactstrap';
 import Dez from "../Img/Profile.jpg"
+import Data from "./Data";
 import "../Css/Profile.css"
 
 
 const Profile = () => {
 
-    const [Firstname, setFirstname] = useState("Detch")
-    const [Lastname, setLastname] = useState("Dechaburapa")
+    const [Myname, setMyname] = useState("Detch Dechaburapa")
+
 
     const [Name, setName] = useState(" ")
     const [Des, setDes] = useState(" ")
     const [Rating, setRating] = useState(" ")
 
     const [Arr, setArr] = useState([])
-    const x =
+
     const add = () => {
-        setArr([...Arr,{Name: Name, Des: Des, Rating: Rating}])
-        alert("success!")
+        setArr([...Arr, {Name: Name, Des: Des, Rating: Rating}])
+        //alert("success!")
     }
 
+    const edit = () => {
+        document.getElementById("Input_N").disabled = false
+        document.getElementById("myBtn").hidden = true
+        document.getElementById("myBtn2").hidden = false
+    }
+
+    const comfirm = () => {
+        document.getElementById("Input_N").disabled = true
+        document.getElementById("myBtn").hidden = false
+        document.getElementById("myBtn2").hidden = true
+    }
 
     return (
         <div className="all">
@@ -31,17 +43,21 @@ const Profile = () => {
                     <Col xs="auto"><img src={Dez} width="300px" height="300px"/></Col>
                     <Col>
                         <Row>
-                            <Col>Name: {Firstname} {Lastname}</Col>
+                            <Col><input type="text" id="Input_N" disabled={true} value={Myname}
+                                        onChange={event => setMyname(event.target.value)}/></Col>
+                            <Col>
+                                <Button onClick={edit} id="myBtn">Edit</Button>
+                                <Button onClick={comfirm} id="myBtn2" hidden={true}>Confirm</Button>
+                            </Col>
                         </Row>
                         <Row>
-                            <Col>
-                                <h5>ประวัติ</h5>
-                                <p>ชอบแมว</p>
-                                <p>ชอบแมว</p>
-                                <p>ชอบแมว</p>
-                                <p>ชอบแมว</p>
-                                <p>ชอบแมว</p>
-                                <p>ชอบแมว</p>
+                            <Col className="Description">
+                                <p> นักศึกษามหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ <br/>
+                                    ศึกษาอยู่คณะวิทยาศาตร์ประยุกต์ สาขาวิทยาการคอมพิวเตอร์<br/>
+                                    ภาษาที่เขียนได้ HTML,JAVA,C++<br/>
+                                    งานอดิเรกคือ ดูหนัง เล่นเกม ฟังเพลง<br/>
+                                    สัตว์ที่ชอบ แมว<br/>
+                                    คติประจำใจ: ทำวันนี้ให้ดีที่สุด</p>
                             </Col>
                         </Row>
                     </Col>
@@ -49,13 +65,15 @@ const Profile = () => {
                 {/*Form/*/}
                 <Row>
                     <Col>
-                        {console.log(Arr)}
+                        <hr/><hr/>
+                        <h3>My Project</h3>
                         {
                             Arr.map(project =>
-                                <div>
-                                    <p>{project.Name}</p>
-                                    <p>{project.Des}</p>
-                                    <p>{project.Rating}</p>
+                                <div className="Project">
+                                    <p>Name: {project.Name}</p>
+                                    <p>Description: {project.Des}</p>
+                                    <p>Rating: {project.Rating}</p>
+                                    <hr/>
                                 </div>
                             )
                         }
@@ -81,9 +99,14 @@ const Profile = () => {
                             <option>⭐⭐⭐⭐⭐</option>
                         </Input>
                     </FormGroup>
-                    <Button onClick={add}>Submit</Button>
+                    <Button onClick={add} color="success">Submit</Button>
                 </Form>
+                <hr/><hr/>
             </Container>
+            <div className="C2">
+                <h3>API</h3>
+                <Data/>
+            </div>
         </div>
 
     );

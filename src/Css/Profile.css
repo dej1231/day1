@@ -1,26 +1,49 @@
 
-*{
+* {
     box-sizing: border-box;
+    font-size: 25px;
 }
 
-h1{
+h1 {
     text-align: center;
+    font-family: Broadway;
 
 }
 
-.C1{
+ิimg{
+    text-align: center;
+}
+
+.C1 {
+
     background-color: #ff9832;
     color: white;
-    width: 100%;
-
+    border-radius: 20px;
 }
 
-.all{
+.C2{
+    text-align: center;
+}
+
+.all {
     background-color: #77acff;
 }
 
-.img{
-
+#Input_N {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    background-color: #ff9832;
+    font-size: 40px;
 }
 
+.Description{
+   font-size: 20px;
+}
+
+#myBtn, #myBtn2{
+    float: right;
+    font-size: 12px;
+}
 
